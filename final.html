@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scret.me - Envie mensagens anônimas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .logo {
+      font-size: 48px;
+      font-weight: bold;
+      margin: 20px 0;
+      background: linear-gradient(45deg, #ff3b5c, #ff914d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .header {
+      background: linear-gradient(45deg, #ff3b5c, #ff914d);
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px;
+      width: 90%;
+      max-width: 400px;
+    }
+    .header h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .header p {
+      margin: 5px 0 0;
+      font-size: 18px;
+    }
+    .message-box {
+      background: #333;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 10px auto;
+      width: 90%;
+      max-width: 400px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      border-radius: 12px;
+      border: none;
+      padding: 10px;
+      background: #444;
+      color: white;
+      font-size: 16px;
+      resize: none;
+    }
+    button {
+      background: #ff3b5c;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+    }
+    button:hover {
+      background: #ff1f4a;
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">Scret.me</div>
+  <div class="header">
+    <h2 id="insta">@pietroogz</h2>
+    <p>Envie-me mensagens anônimas!</p>
+  </div>
+  <div class="message-box">
+    <form action="https://formspree.io/f/xpwqozla" method="POST">
+      <input type="hidden" name="instagram" value="" id="hiddenInsta" />
+      <textarea name="mensagem" placeholder="Envie-me mensagens anônimas!" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+  <div class="footer">
+    <p>🔒 100% anônimo</p>
+  </div>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const insta = urlParams.get('instagram');
+    document.getElementById('insta').innerText = '@' + (insta || 'usuário');
+    document.getElementById('hiddenInsta').value = insta;
+  </script>
+</body>
+</html>
